@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MedicamentDTO {
+    private Long id;
     private String name;
     private String company;
     private String country;
@@ -24,6 +25,7 @@ public class MedicamentDTO {
     private List<String> sideEffects = new ArrayList<>();
     private List<String> contraindications = new ArrayList<>();
     public MedicamentDTO(Medicament med) {
+        this.id = med.getId();
         this.name = med.getName();
         this.company = med.getCompany();
         this.country = med.getCountry();

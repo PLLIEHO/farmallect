@@ -1,9 +1,12 @@
 package ru.nutsalhan87.farmallect.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 import ru.nutsalhan87.farmallect.model.communication.MedicamentResponse;
 import ru.nutsalhan87.farmallect.model.medicament.Medicament;
 import ru.nutsalhan87.farmallect.model.medicament.MedicamentDTO;
@@ -31,6 +34,12 @@ public class MedicamentService {
         this.indicationService = indicationService;
         this.sideEffectService = sideEffectService;
         this.contraindicationService = contraindicationService;
+    }
+
+    @Transactional
+    public MedicamentDTO getMedicament(Long id) {
+        return new MedicamentDTO(medicamentRepository.findById(id).
+                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
     @Transactional
