@@ -96,8 +96,8 @@ public class MedicamentController {
     }
 
     @PostMapping("/compatibility")
-    public CompatibilityResponse checkCompatibility(@RequestBody IncompatibleIngridients compatibilityRequest) {
-        return incompatibleIngridientsService.checkCompatibility(compatibilityRequest);
+    public CompatibilityResponse checkCompatibility(@RequestBody MedicamentsCompatibilityCheck medicamentsCompatibilityCheck) {
+        return incompatibleIngridientsService.checkCompatibility(medicamentsCompatibilityCheck);
     }
 
     @PostMapping("/add-incompatible")
